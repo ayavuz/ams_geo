@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 
 from .models import GeoLocation
 from.serializers import GeoLocationSerializer
@@ -36,5 +37,20 @@ class GeoLocationView(APIView):
 
 
         return Response(serializer.data)
+    
 
+
+    def post(self, request):
+        print('request data', request.data)
+
+        # TODO get lat - long data from request as JSON? And then create the Point object and assign to geolocation
+
+        serializer = GeoLocationSerializer(data=request.data)
+        if serializer.is_valid():
+            # TODO later user=request.user?
+            serializer.save()
+
+        print('BLABLABLALB')
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
