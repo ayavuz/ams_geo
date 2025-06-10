@@ -3,7 +3,7 @@ from django.contrib.gis.geos import Point
 from .models import GeoLocation
 
 class GeoLocationSerializer(serializers.ModelSerializer):
-    # TODO serializer fields uitbreiden en andere fields read-only maken, geen direct set
+    # lat, long fields en andere fields read-only maken, geen directe set
     latitude = serializers.FloatField(write_only=True)
     longitude = serializers.FloatField(write_only=True)
 
