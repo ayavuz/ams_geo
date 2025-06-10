@@ -15,16 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .dynamic_views import init_dynamic_api
+
 from . import views
 from assessment.geoapi.views import GeoLocationView
+
+router = init_dynamic_api('assessment/config.json')
 
 
 urlpatterns = [
     path("status", views.RootView.as_view()),
     path('admin/', admin.site.urls),
-    path('geolocation', GeoLocationView.as_view())
+    path('geolocation', GeoLocationView.as_view()),
+    path('api/', include(router.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

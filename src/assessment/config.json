@@ -1,0 +1,33 @@
+{
+    "objects":[
+        {
+            "name": "boom",
+            "endpoint": "bomen",
+            "fields": [
+                {
+                    "name": "soort",
+                    "type": "string"
+                },    
+                {
+                    "name": "locatie",
+                    "type": "string"
+                }
+
+            ]
+        },
+        {
+            "name": "bankje",
+            "endpoint": "bankjes",
+            "fields": [
+                {
+                    "name": "materiaal",
+                    "type": "string"
+                },    
+                {
+                    "name": "locatie",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}
